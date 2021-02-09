@@ -17,13 +17,11 @@ The figure below shows the general workflow to achieve our objectives. The two t
 
 
 
-<img src="https://github.com/aprendiendo-cosas/NDVI_ugr_ecoinf/raw/main/imagenes/flujograma_simple.png" alt="flujograma_simple" style="zoom:33%;" />
-
-
+<img src="https://github.com/aprendiendo-cosas/NDVI_ugr_ecoinf/raw/main/imagenes/flujograma_simple.png" alt="flujograma_simple" style="zoom:25%;" />
 
 Besides, the following image, shows the step by step procedure that we will describe in this document. 
 
-<img src="https://github.com/aprendiendo-cosas/NDVI_ugr_ecoinf/raw/main/imagenes/flujograma_complejo.png" alt="flujograma_complejo" style="zoom:33%;" />
+<img src="https://github.com/aprendiendo-cosas/NDVI_ugr_ecoinf/raw/main/imagenes/flujograma_complejo.png" alt="flujograma_complejo" style="zoom:20%;" />
 
 
 
@@ -61,7 +59,10 @@ Map.centerObject(zona,11);
 
 + We have used the following functions:
   + *ee.FeatureCollection* (https://developers.google.com/earth-engine/feature_collections) can contain geometrical objects. In this case, we have used it to contain the limits of Sierra Nevada protected area.
+  
   + *Map.centerObject* puts the focus on our area of interest. We will see Sierra Nevada when executing this line. 
+  
+    <div style="page-break-after: always; break-after: page;"></div>
 
 
 + (6) Load Landsat 7 collection. Filter by "zona" and year.
@@ -132,11 +133,14 @@ Map.addLayer(composite.select('NDVI'),
      
 ```
 
+<div style="page-break-after: always; break-after: page;"></div>
+
 - (11) Export the composite image to file. The last step of this workflow within GEE is to export the image to a _.tif_ file. 
+   
    - The function [_Export.image.toDrive_] (https://developers.google.com/earth-engine/exporting) allows us to export the band _NDVI_ from the image _composite_ to a _.tif_ file called _ndvi-1999_. 
    - It is possible to specify the file format, the coordinate system and other properties of the exported image.
-   - When excecuting this function, a new task will appear in the corresponding tab. We must click on "run". A new box will appear that lets us change the name of the image and the folder of our Drive account where it will be saved.
-
+- When excecuting this function, a new task will appear in the corresponding tab. We must click on "run". A new box will appear that lets us change the name of the image and the folder of our Drive account where it will be saved.
+  
   Copy and paste the code below and click Run on the script. We are almost done!
 
 ```javascript
@@ -152,6 +156,8 @@ Export.image.toDrive({
 ```
 
 - (12) I am sure that you have realized that this whole process could be improved by creating a loop that interates the years. You are right. Including this looping feature will be one of the improvements that you will do using Python after this session.
+
+<div style="page-break-after: always; break-after: page;"></div>
 
 
 ### Step by step (RStudio). Compute Mann Kendall time series analysis on NDVI yearly maps.
@@ -238,17 +244,22 @@ writeRaster(rc_tau, filename="rc_tau.tif", format="GTiff", overwrite=TRUE)
 ### Browsing results using QGIS
 
 + (1) Add the following layers to an empty QGIS project:
+
   + _tau.tif_: Raster layer showing the NDVI trend per pixel.
   + _rc_tau.tif_: reclassified version of the above mentioned raster layer.
   + _ndvi_1999_2020.tif_: This a multiband raster image that contains all the NDVI images created in GEE.
   + WMS service showing the most recent ortophoto: http://www.ign.es/wms-inspire/pnoa-ma
+
 + (2) Display _tau.tif_ using a _singleband pseudocolor_ render type. Adjust the maximum value to 0.99 and click to "_clip out of range values_". Add some transparency.
+
 + (3) We will build a nice graph showing the NDVI trend of any selected pixel. In order to do that, follow these steps within QGIS:
+
   + Install a plugin called "_Temporal/Spectral profile tool_". Menu _plugins_->_Manage and install plugins_. The instalation will create a new bottom that depicts a red graph.
   + Select the layer called "_ndvi_1999_2020_" in QGIS.
   + Click on the plugin bottom.
   + Click on the _settings_ tab and add the amount of layers that we are using: 1, 2, 3, .....22.
   + Click on any pixel of the selected layer and you will see a graph showing its NDVI trend. See image below.
 
-![NDVI_profile](https://github.com/aprendiendo-cosas/NDVI_ugr_ecoinf/raw/main/imagenes/ndvi_profile.png)
+  
 
+![NDVI_profile](https://github.com/aprendiendo-cosas/NDVI_ugr_ecoinf/raw/main/imagenes/ndvi_profile.png)
