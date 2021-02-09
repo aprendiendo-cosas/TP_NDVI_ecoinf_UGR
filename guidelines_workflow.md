@@ -17,13 +17,13 @@ The figure below shows the general workflow to achieve our objectives. The two t
 
 
 
-<img src="https://github.com/aprendiendo-cosas/NDVI_ugr_ecoinf/raw/main/imagenes/flujograma_simple.png" alt="flujograma1" style="zoom:50%;" />
+<img src="https://github.com/aprendiendo-cosas/NDVI_ugr_ecoinf/raw/main/imagenes/flujograma_simple.png" alt="flujograma1" style="zoom:30%;" />
 
 
 
 Besides, the following image, shows the step by step procedure that we will describe in this document. 
 
-
+<img src="https://github.com/aprendiendo-cosas/NDVI_ugr_ecoinf/raw/main/imagenes/flujograma_complejo.png" alt="flujograma2" style="zoom:30%;" />
 
 <div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;page&quot;:0,&quot;toolbar&quot;:&quot;pages zoom layers lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;url&quot;:&quot;https://drive.google.com/a/go.ugr.es/uc?id=1BBVPDd-Vn8IEteS6XUITHbm7YLO5uWnA&amp;export=download&quot;}"></div>
 <script type="text/javascript" src="https://www.draw.io/embed2.js?&fetch=https%3A%2F%2Fdrive.google.com%2Fa%2Fgo.ugr.es%2Fuc%3Fid%3D1BBVPDd-Vn8IEteS6XUITHbm7YLO5uWnA%26export%3Ddownload"></script>
@@ -38,21 +38,15 @@ Besides, the following image, shows the step by step procedure that we will desc
 - (3) Create a new file: New-> file. Name: create_ yearly_NDVI
 - (4) Since GEE contains information for the whole planet, we firstly define the area of interest. The example below considers that the area of interest is Sierra Nevada protected area. But, you should use a specific area of that region in order to overcome the limits of our internet connection.
 
- - (4.1) Import the limit of the area of interest (AOI). Each of you will use a different region. Find below the links for those areas:
+ - (4.1) Import the limit of the area of interest (AOI). Each of you will use a different region. Go to the corresponding folder within our Classroom to find the limit of your AOI. :
 
      -  [Sierra Nevada protected area] (https://drive.google.com/file/d/1NoQ9YUj7zrKWlHGqkcSW2_-1NvP0dn6F/view?usp=sharing)
-     -  [Zona_1] (https://drive.google.com/open?id=1hMDUctg5FoE1yn4nYTlOmY1XwV980MVV)
-     -  [Zona_2] (https://drive.google.com/open?id=1H2hW4KQiJm8HCBTTEonAzJNXt0f1ZuMg)
-     -  [Zona_3] (https://drive.google.com/open?id=1nyar_STMbC03dHbwXJy2NBGW2QfFiSWu)
-     -  [Zona_4] (https://drive.google.com/file/d/1VRCCGalH8zhzkGOls9B_kX6Q-_tTY0iD/view?usp=sharing)
-     -  [Zona_5] (https://drive.google.com/open?id=1UEw26msrL-Mp51ilh8l6mTTB0Ua9LYFg)
-     -  [Zona_6] (https://drive.google.com/open?id=1mdiALIIm7UFQbDs9nxD1sF5prz-yKUZu)
-     -  [Zona_7] (https://drive.google.com/open?id=1fe7YDHtWrzjIIjWo_4WgXm-Vx-7CTlfV)
-
+     -  
      
      
-      I order to import any of the above described shapefiles, just follow these steps: Assets-> New -> Table upload -> Shapefiles. Select all files called **pnatural_23030.**. You can also upload a _.zip_ file containing all the files belonging to the shapefile. 
-
+     
+     In order to import any of the above described shapefiles, just follow these steps: Assets-> New -> Table upload -> Shapefiles. Select all files called **pnatural_23030.**. You can also upload a _.zip_ file containing all the files belonging to the shapefile. 
+     
  - (4.2) Add a name for the newly created asset: **pnatural_23030**
 
  - (4.3) Press _Upload_. After some seconds, a new asset will be created.
