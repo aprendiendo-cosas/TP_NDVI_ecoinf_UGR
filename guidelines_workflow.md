@@ -17,15 +17,13 @@ The figure below shows the general workflow to achieve our objectives. The two t
 
 
 
+<img src="https://github.com/aprendiendo-cosas/NDVI_ugr_ecoinf/raw/main/imagenes/flujograma_simple.png" alt="flujograma1" style="zoom:50%;" />
 
 
 
+Besides, the following image, shows the step by step procedure that we will describe in this document. 
 
 
-
-created during the ecoinformatic season 2021. It is a dynamic document created with [draw.io] (https://about.draw.io/). The thread describing how to compute NDVI trends is shown with an orange background.
-
-The following sections describe both parts this workflow.
 
 <div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;page&quot;:0,&quot;toolbar&quot;:&quot;pages zoom layers lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;url&quot;:&quot;https://drive.google.com/a/go.ugr.es/uc?id=1BBVPDd-Vn8IEteS6XUITHbm7YLO5uWnA&amp;export=download&quot;}"></div>
 <script type="text/javascript" src="https://www.draw.io/embed2.js?&fetch=https%3A%2F%2Fdrive.google.com%2Fa%2Fgo.ugr.es%2Fuc%3Fid%3D1BBVPDd-Vn8IEteS6XUITHbm7YLO5uWnA%26export%3Ddownload"></script>
