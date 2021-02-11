@@ -51,17 +51,18 @@ Besides, the following image, shows the step by step procedure that we will desc
 
 - (4) Since GEE contains information for the whole planet, we firstly define the area of interest. The example below considers that the area of interest is Sierra Nevada protected area. But, you should use a specific area of that region in order to overcome the limits of our internet connection.
 
-      - (4.1) Import the limit of the area of interest (AOI). Each of you will use a different region. Go to the corresponding folder within our Classroom to find the limit of your AOI. You can also use [this](https://github.com/aprendiendo-cosas/NDVI_ugr_ecoinf/raw/main/geoinfo/pnatural_23030.zip) shapefile that comprises the borders of Sierra Nevada protected area. 
-        
-          In order to import any of the above described shapefiles, just follow these steps: Assets-> New -> Table upload -> Shapefiles. Select all files called **pnatural_23030.**. You can also upload a _.zip_ file containing all the files belonging to the shapefile. 
-        
-      - (4.2) Add a name for the newly created asset: **pnatural_23030**
-        
-      - (4.3) Press _Upload_. After some seconds, a new asset will be created.
+  - (4.1) Import the limit of the area of interest (AOI). Each of you will use a different region. Go to the corresponding folder within our Classroom to find the limit of your AOI. You can also use [this](https://github.com/aprendiendo-cosas/NDVI_ugr_ecoinf/raw/main/geoinfo/pnatural_23030.zip) shapefile that comprises the borders of Sierra Nevada protected area.       
+    
+    In order to import any of the above described shapefiles, just follow these steps: Assets-> New -> Table upload -> Shapefiles. Select all files called **pnatural_23030.**. You can also upload a _.zip_ file containing all the files belonging to the shapefile. 
+          
+    
+  - (4.2) Add a name for the newly created asset: **pnatural_23030**
+
+  - (4.3) Press _Upload_. After some seconds, a new asset will be created.
 
 - (5) Add **pnatural_23030** to the script. 
 
-	Copy and paste the code below in your script. You have to change the path to your folder within GEE. Run the script to see the results.
+  Copy and paste the code below in your script. You have to change the path to your folder within GEE. Run the script to see the results.
 
 ```javascript
 var zona = ee.FeatureCollection("users/fjbonet/pnatural_23030");
