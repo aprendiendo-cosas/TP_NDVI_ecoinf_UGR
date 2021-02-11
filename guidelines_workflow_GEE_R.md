@@ -1,6 +1,17 @@
-# Guidelines to assess trends in NDVI (1999-2020) time series
+# Guidelines to assess trends in NDVI (1999-2020) time series using GEE and R
+
+
+
+> + **_Version_**: 1
+> + **_Subject_**: Ecoinformatics (UGR)
+> + **_Author_**: Curro Bonet-García (fjbonet@gmail.com)
+
+
+
+
 
 ### Objectives
+
 The overarching objective of this section is to create a map that shows the trend of photosynthetic activity of Sierra Nevada vegetation cover. This will be done using remote sensing techinques. More specifically, we will work with [NDVI](https://en.wikipedia.org/wiki/Normalized_difference_vegetation_index) (Normalized Difference Vegetation Index). This index is considered as a good surrogate of primary production.
 
 Besides, we have two types of learning objectives:
@@ -30,9 +41,9 @@ Besides, the following image, shows the step by step procedure that we will desc
 
 ### Step by step (Google Earth Engine). Load Landsat 7 collection. Create yearly NDVI composite.
 
-- (0) This wokflow is also described in [this] (https://www.youtube.com/watch?v=QkD8kDF2vkg&t=14s) video (Spanish). 
+- (0) This wokflow is also described in [this](https://www.youtube.com/watch?v=QkD8kDF2vkg&t=14s) video (Spanish). 
 
-- (1) Open [Google Earth Engine code editor] (https://code.earthengine.google.com/) and login with your user name.
+- (1) Open [Google Earth Engine code editor](https://code.earthengine.google.com/) and login with your user name.
 
 - (2) Create a new repository: Scripts -> New -> Repository. Name: ecoinformatics.
 
@@ -67,7 +78,7 @@ Map.centerObject(zona,11);
 
 + (6) Load Landsat 7 collection. Filter by "zona" and year.
 
-   + We will use the function [_ee.ImageCollection_] (https://developers.google.com/earth-engine/ic_creating) to access all the time series pertaining Landsat 7. More specifically, we will use the product called [LANDSAT/LE07/C01/T1_SR] (https://developers.google.com/earth-engine/datasets/catalog/LANDSAT_LE07_C01_T1_SR) to compute NDVI.
+   + We will use the function [_ee.ImageCollection_](https://developers.google.com/earth-engine/ic_creating) to access all the time series pertaining Landsat 7. More specifically, we will use the product called [LANDSAT/LE07/C01/T1_SR](https://developers.google.com/earth-engine/datasets/catalog/LANDSAT_LE07_C01_T1_SR) to compute NDVI.
    + All the images existing in the above mentioned datasets will be stored in the variable called _l7collection_.
    + We will also filter all the images by area (using _filterBounds_) and by year (using _filterDate_). Since we will create a yearly NDVI image, we will have to change the year several times (22 times, from 1999 to 2020).
 
@@ -107,7 +118,7 @@ print(l7ndvi);
  ```
 
 - (9) Create a composite (a single image from many others) containing the maximum NDVI value per pixel in the selected year.
-   - [Compositing] (https://developers.google.com/earth-engine/ic_composite_mosaic) is a very common process in remote sensing that refers to the process of combining spatially overlapping images into a single one based on an aggregation function. In this case, we will creates a single image that contains the maximum NDVI value per pixel. I.e. The maximum value of NDVI in the pixel _A_ could occurr in the date _x_, while that maximum value in pixel _B_ could occurr in date _y_. This means that the date of the image would be a composite of all the combined images.
+   - [Compositing](https://developers.google.com/earth-engine/ic_composite_mosaic) is a very common process in remote sensing that refers to the process of combining spatially overlapping images into a single one based on an aggregation function. In this case, we will creates a single image that contains the maximum NDVI value per pixel. I.e. The maximum value of NDVI in the pixel _A_ could occurr in the date _x_, while that maximum value in pixel _B_ could occurr in date _y_. This means that the date of the image would be a composite of all the combined images.
    - The function _qualityMosaic_ is in charge of create the above mentioned composite. It operates over the NDVI collection (_l7ndvi_) and stores the result in a variable called _composite_. 
 
   Copy and paste the code below in your script. Check if the new image is created.
@@ -118,7 +129,7 @@ print(composite);
 ```
 
 - (10) Visualize the obtained image. We will use the function _Map.addLayer_ to view the NDVI composite created above. 
-   - We will first create a variable called _ndviPalette_ that contains 17 hexadecimal numbers. Each of them means a specific [color] (https://www.color-hex.com/). This is a [palette] (https://developers.google.com/earth-engine/tutorial_api_02): comma delimited list of color strings which are alinarly interplated between the maximum and minimum values in the visualization parameters.
+   - We will first create a variable called _ndviPalette_ that contains 17 hexadecimal numbers. Each of them means a specific [color](https://www.color-hex.com/). This is a [palette](https://developers.google.com/earth-engine/tutorial_api_02): comma delimited list of color strings which are alinarly interplated between the maximum and minimum values in the visualization parameters.
    - Then, we will use the function _Map.addLayer_ to add the band _NDVI_ of the combined image (_composite_) using the above created palette (_ndviPalette_). 
 
   Copy and paste the code below in your script. You will see a nice image showing the maximum NDVI value per pixel of the selected year.
@@ -136,8 +147,8 @@ Map.addLayer(composite.select('NDVI'),
 <div style="page-break-after: always; break-after: page;"></div>
 
 - (11) Export the composite image to file. The last step of this workflow within GEE is to export the image to a _.tif_ file. 
-   
-   - The function [_Export.image.toDrive_] (https://developers.google.com/earth-engine/exporting) allows us to export the band _NDVI_ from the image _composite_ to a _.tif_ file called _ndvi-1999_. 
+  
+   - The function [_Export.image.toDrive_](https://developers.google.com/earth-engine/exporting) allows us to export the band _NDVI_ from the image _composite_ to a _.tif_ file called _ndvi-1999_. 
    - It is possible to specify the file format, the coordinate system and other properties of the exported image.
 - When excecuting this function, a new task will appear in the corresponding tab. We must click on "run". A new box will appear that lets us change the name of the image and the folder of our Drive account where it will be saved.
   
@@ -162,7 +173,7 @@ Export.image.toDrive({
 
 ### Step by step (RStudio). Compute Mann Kendall time series analysis on NDVI yearly maps.
 
-- (0) This wokflow is also described in [this] (https://youtu.be/22dlKcNa_SI) video (Spanish).
+- (0) This wokflow is also described in [this](https://youtu.be/22dlKcNa_SI) video (Spanish).
 - (1) We first define the working directory. You just have to change the path to your own one.
 
 ```{r setup, include=FALSE}
@@ -178,11 +189,11 @@ library(Kendall)
 ```
 
 
-- (2) Create a stack containing all _.tiff_ files created by GEE. A [RasterStack] (https://www.rdocumentation.org/packages/raster/versions/3.0-12/topics/stack) is a collection of Raster Layers with the same spatial extent and resolution. It can be created from raster files.
+- (2) Create a stack containing all _.tiff_ files created by GEE. A [RasterStack](https://www.rdocumentation.org/packages/raster/versions/3.0-12/topics/stack) is a collection of Raster Layers with the same spatial extent and resolution. It can be created from raster files.
 
      - We first create a list containing the names of all _.tif_ files that will be included in the stack.
      - Then, we use the above mentioned function (_Stack_) to create a multi-layer object.
-     - Once we applied _Stack_ function, we will use _Brick_ function over it. A [Brick] (https://www.rdocumentation.org/packages/raster/versions/2.9-23/topics/brick) is a multi-layer raster object. It is similar to _Stack_, but its processing time should be shorter.
+     - Once we applied _Stack_ function, we will use _Brick_ function over it. A [Brick](https://www.rdocumentation.org/packages/raster/versions/2.9-23/topics/brick) is a multi-layer raster object. It is similar to _Stack_, but its processing time should be shorter.
      - Finally, we will export the created object to a _.tif_ file. We will use this multi-layer file to create trends graphs in Quatum GIS.
 
  
@@ -197,9 +208,9 @@ plot(ndvis)
 writeRaster(ndvis, filename="ndvi_1999_2020.tif", format="GTiff", overwrite=TRUE)
  ```
 
-- (3) Run [Mann Kendall] (https://www.statisticshowto.datasciencecentral.com/mann-kendall-trend-test/) test over all "bands" within the multi-layer object. This test is very useful to analyze data collected over time for consistently increasing or decreasing trends. Since it is a non-parameetric test, it can be used for all distributions. 
+- (3) Run [Mann Kendall](https://www.statisticshowto.datasciencecentral.com/mann-kendall-trend-test/) test over all "bands" within the multi-layer object. This test is very useful to analyze data collected over time for consistently increasing or decreasing trends. Since it is a non-parameetric test, it can be used for all distributions. 
 
-   - We will "embed" [Mann Kendall] (https://www.rdocumentation.org/packages/Kendall/versions/2.2/topics/MannKendall) test within an R function called _fun_k_
+   - We will "embed" [Mann Kendall](https://www.rdocumentation.org/packages/Kendall/versions/2.2/topics/MannKendall) test within an R function called _fun_k_
    - Then, we will create a new object called _kendal_result_ that contains the results of applying Kendall function over the multi-layer object (_ndvi_)
    - Mann Kendall test yield another spatial object containing five bands. We will pay attention to the first two ones:
      - _tau_= Kendall's _tau_ statistic. This layer contain the trends that Kendall has found in our time series. Negative values means negative trends and viceversa. 0 means that there is no trend.
@@ -263,3 +274,4 @@ writeRaster(rc_tau, filename="rc_tau.tif", format="GTiff", overwrite=TRUE)
   
 
 ![NDVI_profile](https://github.com/aprendiendo-cosas/NDVI_ugr_ecoinf/raw/main/imagenes/ndvi_profile.png)
+
