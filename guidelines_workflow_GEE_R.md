@@ -182,8 +182,9 @@ Export.image.toDrive({
 setwd("/Users/fjbonet_trabajo/ndvi")
 
 #install and load required packages
-install.packages("raster")
-install.packages("Kendall")
+if (!require(raster)) install.packages("raster")
+if (!require(Kendall)) install.packages("Kendall")
+
 library(raster)
 library(Kendall)
 
